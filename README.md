@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# 🛒 Proyek E-Business Laravel (ebusiness2_nama_kalian)
+# 🛒 Proyek E-Business Laravel (Pangestu Aji Nugroho)
 
 Proyek ini adalah implementasi tugas mata kuliah E-Business menggunakan framework Laravel, yang fokus pada **Role-Based Access Control (RBAC)** menggunakan Laravel Breeze dan Middleware.
 
