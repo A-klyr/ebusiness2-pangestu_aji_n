@@ -7,53 +7,68 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# 🛒 Proyek E-Business Laravel (ebusiness2_nama_kalian)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Proyek ini adalah implementasi tugas mata kuliah E-Business menggunakan framework Laravel, yang fokus pada **Role-Based Access Control (RBAC)** menggunakan Laravel Breeze dan Middleware.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Implementasi Tugas
 
-## Learning Laravel
+Berikut adalah poin-poin tugas yang telah diimplementasikan:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+1.  **Repository Setup:** Repository GitHub dibuat dengan nama `ebusiness2_nama_kalian`.
+2.  **Laravel Project:** Project Laravel baru telah dibuat dan di-_push_ ke GitHub.
+3.  **Authentication:** Laravel Breeze telah diinstal untuk fungsionalitas Login & Register.
+4.  **Database:** Kolom `role` telah ditambahkan pada tabel `users` dengan nilai *default* **`user`**.
+5.  **Role Access Control (No. 6):**
+    * **Middleware `AdminMiddleware`** telah dibuat untuk memverifikasi `role` pengguna.
+    * Route **`/dashboard`** diakses oleh **user biasa**.
+    * Route **`/admin`** hanya dapat diakses oleh **admin** (dilindungi oleh `AdminMiddleware`).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 📸 Dokumentasi Screenshot
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Berikut adalah _screenshot_ sebagai bukti penyelesaian tugas (termasuk penerapan `AdminMiddleware`).
 
-### Premium Partners
+> **Catatan:** Semua file gambar disimpan di folder `/screenshots`.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Halaman Login
+![Screenshot Halaman Login](screenshots/Login.png)
 
-## Contributing
+### 2. Dashboard User (/dashboard)
+Hanya menampilkan Dashboard dasar bagi pengguna dengan role `user`.
+![Screenshot Dashboard User](screenshots/dashboard_user.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Dashboard Admin (/admin)
+Hanya dapat diakses setelah login dan memiliki role `admin`.
+![Screenshot Dashboard Admin](screenshots/dashboard_admin.png)
 
-## Code of Conduct
+### 4. Hasil `php artisan route:list`
+Verifikasi penerapan Middleware **`admin`** pada _route_ `/admin`.
+[Screenshot Route List](screenshots/Route_list.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+GET|HEAD  / ................................................................................... 
+  GET|HEAD  admin ............................................................... admin.dashboard
+  GET|HEAD  confirm-password ......... password.confirm › Auth\ConfirmablePasswordController@show
+  POST      confirm-password ........................... Auth\ConfirmablePasswordController@store
+  GET|HEAD  dashboard ................................................................. dashboard
+  POST      email/verification-notification verification.send › Auth\EmailVerificationNotificati…
+  GET|HEAD  forgot-password .......... password.request › Auth\PasswordResetLinkController@create
+  POST      forgot-password ............. password.email › Auth\PasswordResetLinkController@store
+  GET|HEAD  login ............................ login › Auth\AuthenticatedSessionController@create
+  POST      login ..................................... Auth\AuthenticatedSessionController@store
+  POST      logout ......................... logout › Auth\AuthenticatedSessionController@destroy
+  PUT       password ........................... password.update › Auth\PasswordController@update
+  GET|HEAD  profile ....................................... profile.edit › ProfileController@edit
+  PATCH     profile ................................... profile.update › ProfileController@update
+  DELETE    profile ................................. profile.destroy › ProfileController@destroy
+  GET|HEAD  register ............................ register › Auth\RegisteredUserController@create
+  POST      register ........................................ Auth\RegisteredUserController@store
+  POST      reset-password .................... password.store › Auth\NewPasswordController@store
+  GET|HEAD  reset-password/{token} ........... password.reset › Auth\NewPasswordController@create
+  GET|HEAD  storage/{path} ........................................................ storage.local
+  GET|HEAD  up .................................................................................. 
+  GET|HEAD  verify-email ........... verification.notice › Auth\EmailVerificationPromptController
+  GET|HEAD  verify-email/{id}/{hash} ........... verification.verify › Auth\VerifyEmailController
