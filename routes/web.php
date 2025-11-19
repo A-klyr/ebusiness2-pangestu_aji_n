@@ -2,17 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Ini adalah route utama aplikasi kamu.
-| - /dashboard → hanya untuk user biasa (auth & verified)
-| - /admin → hanya untuk admin (auth & verified)
-| - /profile → hanya untuk user yang login
-|
+| Route admin dipisahkan agar tidak bentrok dengan user biasa.
+| Semua route product sekarang dilindungi middleware admin.
+|--------------------------------------------------------------------------
 */
 
 // Halaman awal (guest)
@@ -20,17 +18,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Dashboard untuk user biasa
+Route::get('/check-role', function () {
+    return auth()->check() ? auth()->user()->role : 'Not logged in';
+})->middleware('auth');
+
+
+// Dashboard user biasa
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Dashboard untuk admin
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified', 'admin'])->name('admin.dashboard');
 
-// Group route untuk profile (user yang login)
+// ===============================
+// ROUTE KHUSUS ADMIN
+// ===============================
+Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->group(function () {
+
+    // Dashboard Admin
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    // CRUD Produk khusus admin
+    Route::resource('products', ProductController::class);
+});
+
+
+// ===============================
+// ROUTE PROFILE UNTUK USER LOGIN
+// ===============================
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

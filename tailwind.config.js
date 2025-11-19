@@ -9,6 +9,21 @@ export default {
         './resources/views/**/*.blade.php',
     ],
 
+    safelist: [
+        {
+            pattern: /bg-(indigo|emerald|purple|orange|pink|blue|cyan|teal|red|gray)-(50|100|200|300|400|500|600|700|800|900)/,
+        },
+        {
+            pattern: /from-(indigo|emerald|purple|orange|pink|blue|cyan|teal|red|gray)-(400|500|600)/,
+        },
+        {
+            pattern: /to-(indigo|emerald|purple|orange|pink|blue|cyan|teal|red|gray)-(400|500|600)/,
+        },
+        {
+            pattern: /text-(indigo|emerald|purple|orange|pink|blue|cyan|teal|red|gray)-(400|500|600|700)/,
+        },
+    ],
+
     theme: {
         extend: {
             fontFamily: {
