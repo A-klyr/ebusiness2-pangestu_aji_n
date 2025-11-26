@@ -79,13 +79,17 @@ Mata Kuliah: **E-Business**
       <img src="screenshots/EditProduct.png" alt="Edit Product">
       <p align="center"><b>Edit Produk</b></p>
     </td>
+    <td width="50%">
+      <img src="screenshots/Delete.png" alt="Edit Product">
+      <p align="center"><b>Delete Produk</b></p>
+    </td>
   </tr>
 </table>
 
 ---
 
 ### 🎨 Improved Sidebar
-<img src="screenshots/SidebarDiperbaiki.png" width="600" alt="Sidebar">
+<img src="screenshots/Sidebar2.png" width="600" alt="Sidebar">
 
 > Sidebar dengan logout dropdown yang dinamis dan responsive
 
