@@ -71,17 +71,17 @@ Mata Kuliah: **E-Business**
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="33%" align="center">
       <img src="screenshots/AddProduct.png" alt="Add Product">
-      <p align="center"><b>Tambah Produk Baru</b></p>
+      <p><b>Tambah Produk Baru</b></p>
     </td>
-    <td width="50%">
+    <td width="33%" align="center">
       <img src="screenshots/EditProduct.png" alt="Edit Product">
-      <p align="center"><b>Edit Produk</b></p>
+      <p><b>Edit Produk</b></p>
     </td>
-    <td width="50%">
-      <img src="screenshots/Delete.png" alt="Edit Product">
-      <p align="center"><b>Delete Produk</b></p>
+    <td width="33%" align="center">
+      <img src="screenshots/Delete.png" alt="Delete Product">
+      <p><b>Delete Produk</b></p>
     </td>
   </tr>
 </table>
