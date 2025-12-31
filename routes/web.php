@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\KasirController; // ⚠️ TAMBAHKAN INI - YANG KURANG!
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Debug route - cek role user
 Route::get('/check-role', function () {
     return auth()->check() ? auth()->user()->role : 'Not logged in';
 })->middleware('auth');
 
 
+// ===============================
+// ROUTE KHUSUS USER BIASA
+// ===============================
+
 // Dashboard user biasa
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route kasir untuk user biasa
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/kasir/dashboard', [KasirController::class, 'dashboard'])->name('kasir.dashboard');
+    Route::get('/kasir/pos', [KasirController::class, 'pos'])->name('kasir.pos');
+});
 
 
 // ===============================

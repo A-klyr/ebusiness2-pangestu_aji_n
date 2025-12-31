@@ -18,10 +18,10 @@ class ProductController extends Controller
         // Search functionality
         if ($request->has('search')) {
             $search = $request->search;
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('sku', 'like', "%{$search}%")
-                  ->orWhere('category', 'like', "%{$search}%");
+                    ->orWhere('sku', 'like', "%{$search}%")
+                    ->orWhere('category', 'like', "%{$search}%");
             });
         }
 
@@ -72,7 +72,7 @@ class ProductController extends Controller
 
         Product::create($validated);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('products.index')
             ->with('success', 'Product created successfully!');
     }
 
@@ -118,7 +118,7 @@ class ProductController extends Controller
 
         $product->update($validated);
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('products.index')
             ->with('success', 'Product updated successfully!');
     }
 
@@ -133,7 +133,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.dashboard')
+        return redirect()->route('products.index')
             ->with('success', 'Product deleted successfully!');
     }
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Admin' }} - {{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -14,23 +14,16 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <!-- Alpine.js (sudah include di Breeze) -->
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
 </head>
 
-<body class="font-sans antialiased bg-gray-50" x-data="{ sidebarOpen: true }">
-    <div class="flex h-screen bg-gray-50">
-        @include('layouts.sidebar')
+<body class="font-sans antialiased bg-gray-50">
+    <div class="min-h-screen">
+        <!-- No Navbar Include -->
 
-        <div class="flex-1 flex flex-col overflow-hidden transition-all duration-300"
-            :class="sidebarOpen ? 'ml-64' : 'ml-20'">
+        <!-- Page Content -->
+        <main>
             {{ $slot }}
-        </div>
+        </main>
     </div>
 </body>
 
