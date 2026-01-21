@@ -1,207 +1,165 @@
-# 🛒 E-Business Laravel — Role Based Access Control
+# 🛒 POS Tracker — Laravel E-Business Project
 
 <div align="center">
-**Implementasi Role-Based Access Control (RBAC) menggunakan Laravel Breeze & Custom Middleware**
-
-Dibuat oleh: **Pangestu Aji Nugroho**  
-Mata Kuliah: **E-Business**
-
+  <img src="screenshots/dashboard_admin.png" width="800" alt="Main Dashboard">
+  <br>
+  <b>Sistem Point of Sales (POS) Modern dengan Role-Based Access Control</b>
+  <br>
+  <i>Dibuat oleh: <b>Pangestu Aji Nugroho</b> | Mata Kuliah: <b>E-Business</b></i>
 </div>
 
 ---
 
-## 📋 Daftar Isi
+## 📋 Fitur Utama System
 
-- [Fitur Utama](#-fitur-utama)
-- [Screenshot Aplikasi](#-screenshot-aplikasi)
-- [Teknologi](#-teknologi-yang-digunakan)
-- [Instalasi](#-instalasi)
-- [Route Structure](#-route-structure)
+Sistem ini memiliki dua dashboard utama yang dipisahkan berdasarkan hak akses pengguna:
 
----
+### 🛡️ Admin Panel
+*   **Real-time Analytics**: Visualisasi data penjualan dan performa toko.
+*   **Inventory Management**: Full CRUD Produk dengan notifikasi stok rendah.
+*   **Customer Tracking**: Manajemen database pelanggan setia.
+*   **Sales Report**: Laporan riwayat transaksi lengkap dari seluruh kasir.
+*   **Shop Settings**: Pengaturan identitas toko (Nama, Alamat, Logo).
 
-## ✨ Fitur Utama
-
-### 🔐 Authentication System
-- **Login & Register** menggunakan Laravel Breeze
-- Password hashing dengan bcrypt
-- Session management
-
-### 👥 Role-Based Access Control
-- **2 Role**: `user` dan `admin`
-- Middleware `AdminMiddleware` untuk proteksi route admin
-- Default role: `user` saat registrasi
-
-### 🎯 Dashboard
-- **User Dashboard** (`/dashboard`) - Akses untuk user biasa
-- **Admin Dashboard** (`/admin`) - Akses eksklusif untuk admin
-
-### 📦 Product Management (Admin Only)
-- Tambah produk baru
-- Edit produk existing
-- Hapus produk
-- View semua produk
+### � Kasir Dashboard
+*   **Point of Sales (POS)**: Antarmuka kasir yang cepat dengan fitur pencarian produk.
+*   **Real Checkout**: Pemrosesan transaksi nyata yang memotong stok secara otomatis.
+*   **Payment Gateway Simulation**: Pilihan metode pembayaran (Cash/Transfer).
+*   **Personal History**: Kasir bisa melihat riwayat penjualannya sendiri.
+*   **Low Stock Alerts**: Peringatan stok menipis khusus untuk produk di area kasir.
 
 ---
 
-## 📸 Screenshot Aplikasi
+## 📸 Dokumentasi Fitur (Screenshots)
 
-### 🔑 Login Page
-<img src="screenshots/Login.png" width="600" alt="Login Page">
+### 📊 Dashboard & Analytics
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <img src="screenshots/dashboard_admin.png" alt="Admin Dashboard">
+      <br><b>Admin Dashboard</b>
+    </td>
+    <td width="50%" align="center">
+      <img src="screenshots/analytic_fitur.png" alt="Analytics">
+      <br><b>Modul Analytics</b>
+    </td>
+  </tr>
+</table>
 
-> Halaman autentikasi dengan form login yang clean dan modern
+### 🛒 Proses Transaksi (POS)
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <img src="screenshots/kasir_pos.png" alt="POS UI">
+      <br><b>Interface Kasir (POS)</b>
+    </td>
+    <td width="50%" align="center">
+      <img src="screenshots/payment.png" alt="Payment Confirmation">
+      <br><b>Konfirmasi Pembayaran Premium</b>
+    </td>
+  </tr>
+</table>
 
----
-
-### 👤 User Dashboard
-<img src="screenshots/UserDashboard.png" width="600" alt="User Dashboard">
-
-> Dashboard untuk user biasa dengan akses terbatas
-
----
-
-### 🛠️ Admin Dashboard
-<img src="screenshots/AdminDashboard+sidebar.png" width="600" alt="Admin Dashboard">
-
-> Dashboard admin dengan sidebar navigasi lengkap dan statistik real-time
-
----
-
-### ➕ Product Management
-
-<table>
+### 📦 Manajemen Produk
+<table width="100%">
   <tr>
     <td width="33%" align="center">
-      <img src="screenshots/AddProduct.png" alt="Add Product">
-      <p><b>Tambah Produk Baru</b></p>
+      <img src="screenshots/add_product.png" alt="Add Product">
+      <br><b>Tambah Produk</b>
     </td>
     <td width="33%" align="center">
-      <img src="screenshots/EditProduct.png" alt="Edit Product">
-      <p><b>Edit Produk</b></p>
+      <img src="screenshots/edit_product.png" alt="Edit Product">
+      <br><b>Edit Produk</b>
     </td>
     <td width="33%" align="center">
-      <img src="screenshots/Delete.png" alt="Delete Product">
-      <p><b>Delete Produk</b></p>
+      <img src="screenshots/delete_product.png" alt="Delete Product">
+      <br><b>Konfirmasi Hapus</b>
+    </td>
+  </tr>
+</table>
+
+### 👥 Modul Tambahan
+<table width="100%">
+  <tr>
+    <td width="25%" align="center">
+      <img src="screenshots/customer_fitur.png" alt="Customers">
+      <br><b>Manajemen Pelanggan</b>
+    </td>
+    <td width="25%" align="center">
+      <img src="screenshots/sales_fitur.png" alt="Sales">
+      <br><b>Riwayat Penjualan</b>
+    </td>
+    <td width="25%" align="center">
+      <img src="screenshots/settings_fitur.png" alt="Settings">
+      <br><b>Pengaturan Toko</b>
+    </td>
+    <td width="25%" align="center">
+      <img src="screenshots/dashboard_kasir.png" alt="Kasir Dashboard">
+      <br><b>Dashboard Kasir</b>
     </td>
   </tr>
 </table>
 
 ---
 
-### 🎨 Improved Sidebar
-<img src="screenshots/Sidebar2.png" width="600" alt="Sidebar">
+## �️ Tech Stack
 
-> Sidebar dengan logout dropdown yang dinamis dan responsive
-
----
-
-### 🛣️ Route Structure
-<img src="screenshots/updateRoute-list.png" width="600" alt="Route List">
-
-> Output dari `php artisan route:list` menunjukkan struktur routing yang terorganisir
-
-**Route Protection:**
-- ✅ Middleware `admin` aktif pada route `/admin`
-- ✅ Middleware `auth` untuk semua protected routes
-- ✅ Guest middleware untuk login/register
-
----
-
-## 🔧 Teknologi yang Digunakan
-
-| Teknologi | Versi | Kegunaan |
-|-----------|-------|----------|
+| Teknologi | Versi | Peran |
+|-----------|-------|-------|
 | **Laravel** | 12.x | Backend Framework |
-| **Laravel Breeze** | Latest | Authentication Scaffolding |
-| **PHP** | 8.2+ | Programming Language |
-| **MySQL** | 8.0+ | Database Management |
-| **Tailwind CSS** | 3.x | Styling Framework |
-| **Alpine.js** | 3.x | Interactive Components |
+| **Tailwind CSS** | 3.x | UI Styling |
+| **Alpine.js** | 3.x | Frontend Reactivity |
+| **SweetAlert2** | 11.x | Premium UI Notifications |
+| **MySQL** | 8.0+ | Database Persistence |
+| **Animate.css** | 4.x | UI Animations |
 
 ---
 
-## 📥 Instalasi
+## � Panduan Instalasi
 
-```bash
-# Clone repository
-git clone https://github.com/yourusername/ebusiness2_nama_kalian.git
-cd ebusiness2_nama_kalian
+Ikuti langkah-langkah di bawah untuk menjalankan project di lokal Anda:
 
-# Install dependencies
-composer install
-npm install
+1.  **Clone Repository**
+    ```bash
+    git clone https://github.com/A-klyr/ebusiness2-pangestu_aji_n.git
+    cd ebusiness2-pangestu_aji_n
+    ```
 
-# Setup environment
-cp .env.example .env
-php artisan key:generate
+2.  **Install Dependencies**
+    ```bash
+    composer install
+    npm install
+    ```
 
-# Database setup
-php artisan migrate
+3.  **Setup Environment**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-# Compile assets
-npm run dev
+4.  **Database Migration & Seeding**
+    *Pastikan database MySQL sudah aktif dan detailnya dikonfigurasi di file .env*
+    ```bash
+    php artisan migrate
+    php artisan db:seed # Optional: Untuk data dummy awal
+    ```
 
-# Run server
-php artisan serve
-```
-
-### 👤 Default Admin Account
-Setelah migration, buat admin manual via Tinker:
-```bash
-php artisan tinker
-```
-```php
-User::create([
-    'name' => 'Admin',
-    'email' => 'admin@example.com',
-    'password' => bcrypt('password'),
-    'role' => 'admin'
-]);
-```
-
----
-
-## 🗂️ Struktur Database
-
-### Users Table
-```sql
-- id (primary key)
-- name (string)
-- email (string, unique)
-- password (string, hashed)
-- role (enum: 'user', 'admin') DEFAULT 'user'
-- created_at (timestamp)
-- updated_at (timestamp)
-```
-
----
-
-## 🎓 Tentang Proyek
-
-Proyek ini merupakan implementasi tugas mata kuliah **E-Business** yang berfokus pada:
-- Implementasi Authentication & Authorization
-- Role-Based Access Control (RBAC)
-- CRUD Operations
-- Middleware Custom di Laravel
-- Best Practices dalam Web Development
+5.  **Compile Assets & Run Server**
+    ```bash
+    npm run dev
+    # (Di terminal terpisah)
+    php artisan serve
+    ```
 
 ---
 
 ## 👨‍💻 Developer
-
 **Pangestu Aji Nugroho**  
-Mata Kuliah: E-Business  
-Tahun: 2024/2025
+*Student of E-Business Course*  
+Fokus: *Web Development & System Analysis*
 
 ---
-
 <div align="center">
-
-### 📝 Catatan
-
-Proyek ini dibuat untuk keperluan akademik dan pembelajaran.  
-Jika ada pertanyaan atau saran, silakan buka issue di repository ini.
-
-**⭐ Jangan lupa beri star jika bermanfaat!**
-
+  <p>Dibuat dengan ❤️ menggunakan Laravel Ecosystem</p>
+  <b>© 2026 POS Tracker Project</b>
 </div>
