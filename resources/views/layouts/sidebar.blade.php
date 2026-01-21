@@ -38,7 +38,7 @@
         </a>
 
         <!-- Sales -->
-        <a href="#"
+        <a href="{{ route('sales.index') }}"
             class="w-full flex items-center gap-3 px-4 py-3 transition-colors {{ request()->routeIs('sales.*') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : 'text-gray-600 hover:bg-gray-50' }}">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -49,7 +49,7 @@
         </a>
 
         <!-- Customers -->
-        <a href="#"
+        <a href="{{ route('customers.index') }}"
             class="w-full flex items-center gap-3 px-4 py-3 transition-colors {{ request()->routeIs('customers.*') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : 'text-gray-600 hover:bg-gray-50' }}">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -60,7 +60,7 @@
         </a>
 
         <!-- Analytics -->
-        <a href="#"
+        <a href="{{ route('analytics.index') }}"
             class="w-full flex items-center gap-3 px-4 py-3 transition-colors {{ request()->routeIs('analytics.*') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : 'text-gray-600 hover:bg-gray-50' }}">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,7 +70,7 @@
         </a>
 
         <!-- Settings -->
-        <a href="#"
+        <a href="{{ route('settings.index') }}"
             class="w-full flex items-center gap-3 px-4 py-3 transition-colors {{ request()->routeIs('settings.*') ? 'bg-blue-50 text-blue-600 border-r-4 border-blue-600' : 'text-gray-600 hover:bg-gray-50' }}">
             <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

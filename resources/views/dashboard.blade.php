@@ -69,7 +69,7 @@
                 <!-- Secondary Actions -->
                 <div class="grid grid-rows-2 gap-6">
                     <!-- Transaction History -->
-                    <a href="#"
+                    <a href="{{ route('kasir.history') }}"
                         class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-200 hover:shadow-md transition-all flex items-center gap-4 group">
                         <div
                             class="p-3 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-100 transition-colors">
@@ -114,13 +114,9 @@
                         <h3 class="font-bold text-gray-800">Perhatian (Stok Menipis)</h3>
                     </div>
 
-                    @php
-                        $lowStock = \App\Models\Product::where('stock', '<=', 5)->where('status', 'active')->limit(3)->get();
-                    @endphp
-
-                    @if($lowStock->count() > 0)
+                    @if($lowStockItems->count() > 0)
                         <div class="space-y-3">
-                            @foreach($lowStock as $item)
+                            @foreach($lowStockItems as $item)
                                 <div
                                     class="flex items-center justify-between p-3 bg-orange-50 rounded-lg border border-orange-100">
                                     <span class="text-sm font-medium text-gray-700">{{ $item->name }}</span>
@@ -149,12 +145,13 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
                             <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Total Transaksi</p>
-                            <p class="text-2xl font-bold">0</p>
-                            <p class="text-[10px] text-gray-400 mt-1">Belum ada data</p>
+                            <p class="text-2xl font-bold">{{ $totalTransactions }}</p>
+                            <p class="text-[10px] text-gray-400 mt-1">Hari ini</p>
                         </div>
                         <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
                             <p class="text-gray-400 text-xs uppercase tracking-wider mb-1">Omzet Sementara</p>
-                            <p class="text-2xl font-bold text-green-400">Rp 0</p>
+                            <p class="text-2xl font-bold text-green-400">Rp
+                                {{ number_format($todayRevenue, 0, ',', '.') }}</p>
                             <p class="text-[10px] text-gray-400 mt-1">Semangat jualan!</p>
                         </div>
                     </div>
