@@ -1,7 +1,7 @@
 services:
   - type: web
     name: pos-tracker-app
-    runtime: docker # Menggunakan Docker agar PHP berjalan 100% stabil
+    runtime: docker
     plan: free
     envVars:
       - key: APP_KEY
@@ -10,6 +10,8 @@ services:
         value: false
       - key: APP_ENV
         value: production
+      - key: LOG_CHANNEL
+        value: stderr
       - key: DB_CONNECTION
         value: pgsql
       - key: DATABASE_URL
