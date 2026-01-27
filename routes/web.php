@@ -4,14 +4,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\KasirController; // ⚠️ TAMBAHKAN INI - YANG KURANG!
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 | Route admin dipisahkan agar tidak bentrok dengan user biasa.
-| Semua route product sekarang dilindungi middleware admin.
+| Semua rute dilindungi sesuai dengan peran (Admin/Kasir).
 |--------------------------------------------------------------------------
 */
 
@@ -24,41 +23,6 @@ Route::get('/', function () {
 Route::get('/check-role', function () {
     return auth()->check() ? auth()->user()->role : 'Not logged in';
 })->middleware('auth');
-
-/**
- * 🛠️ RUTE SETUP KHUSUS RENDER (Hapus setelah berhasil)
- * Akses link ini setelah deploy: pos-tracker-app.onrender.com/render-setup
- */
-Route::get('/render-setup', function () {
-    try {
-        // 1. Jalankan Migrasi
-        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        $output = \Illuminate\Support\Facades\Artisan::output();
-
-        // 2. Cek user pertama dan jadikan Admin (jika ada)
-        $user = \App\Models\User::first();
-        if ($user) {
-            $user->role = 'admin';
-            $user->save();
-            $adminStatus = "User '{$user->email}' sekarang adalah ADMIN.";
-        } else {
-            $adminStatus = "Belum ada user terdaftar. Silakan Register dulu.";
-        }
-
-        return "<h3>✅ Setup Berhasil!</h3><pre>$output</pre><br><b>$adminStatus</b><br><br><a href='/'>Ke Halaman Login</a>";
-    } catch (\Exception $e) {
-        return "<h3>❌ Setup Gagal</h3><pre>" . $e->getMessage() . "</pre>";
-    }
-});
-
-Route::get('/debug-migrate', function () {
-    try {
-        Artisan::call('migrate', ['--force' => true]);
-        return "Migrasi Berhasil!";
-    } catch (\Exception $e) {
-        return "Error: " . $e->getMessage();
-    }
-});
 
 
 // ===============================
