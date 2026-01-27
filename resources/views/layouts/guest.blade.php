@@ -22,26 +22,26 @@
         }
 
         .bg-pattern {
-            background-color: #0f172a;
-            background-image: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.2) 0, transparent 50%),
-                radial-gradient(at 50% 0%, rgba(124, 58, 237, 0.2) 0, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(219, 39, 119, 0.2) 0, transparent 50%);
+            background: #0f172a;
+            background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+            background-attachment: fixed;
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
-<body class="font-sans text-gray-900 antialiased bg-pattern min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-md animate__animated animate__fadeIn">
+<body class="font-sans text-gray-100 antialiased bg-pattern min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
         <div class="text-center mb-8">
-            <div class="inline-flex p-4 rounded-2xl bg-blue-600/20 mb-4 shadow-xl shadow-blue-500/10">
-                <svg class="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="inline-flex p-4 rounded-2xl bg-blue-600/20 mb-4">
+                <svg style="width: 48px; height: 48px;" class="text-blue-500" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                 </svg>
@@ -51,7 +51,7 @@
             <p class="text-gray-400 mt-2">Selamat datang kembali, silakan login.</p>
         </div>
 
-        <div class="glass rounded-3xl p-8 shadow-2xl overflow-hidden border border-white/10">
+        <div class="glass rounded-3xl p-8 shadow-2xl border border-white/10">
             {{ $slot }}
         </div>
 

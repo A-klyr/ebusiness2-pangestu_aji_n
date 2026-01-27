@@ -47,8 +47,9 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install
 RUN npm run build
 
-# Atur izin folder
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Atur izin folder (Seluruh folder agar Apache bisa membaca file build)
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Expose port
 EXPOSE 80
