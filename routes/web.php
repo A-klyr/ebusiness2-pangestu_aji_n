@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\KasirController; // ⚠️ TAMBAHKAN INI - YANG KURANG!
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,15 @@ Route::get('/render-setup', function () {
         return "<h3>✅ Setup Berhasil!</h3><pre>$output</pre><br><b>$adminStatus</b><br><br><a href='/'>Ke Halaman Login</a>";
     } catch (\Exception $e) {
         return "<h3>❌ Setup Gagal</h3><pre>" . $e->getMessage() . "</pre>";
+    }
+});
+
+Route::get('/debug-migrate', function () {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        return "Migrasi Berhasil!";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
     }
 });
 
