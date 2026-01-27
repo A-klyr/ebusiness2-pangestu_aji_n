@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: pos-tracker-app
+    runtime: php
+    buildCommand: ./build.sh
+    startCommand: vendor/bin/heroku-php-apache2 public/
+    envVars:
+      - key: APP_KEY
+        sync: false # Anda harus memasukkan ini secara manual di dashboard nanti
+      - key: APP_DEBUG
+        value: false
+      - key: APP_ENV
+        value: production
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pos-db
+          property: connectionString
+      - key: NODE_VERSION
+        value: 18
+
+databases:
+  - name: pos-db
+    plan: free
+    postgresMajorVersion: 15
