@@ -32,14 +32,18 @@ Sistem ini memiliki dua dashboard utama yang dipisahkan berdasarkan hak akses pe
 
 ## 📸 Dokumentasi Fitur (Screenshots)
 
-### 📊 Dashboard & Analytics
+### 📊 Dashboard & Login Experience
 <table width="100%">
   <tr>
-    <td width="50%" align="center">
+    <td width="33%" align="center">
+      <img src="screenshots/auth.png" alt="Login Page">
+      <br><b>Halaman Login Premium</b>
+    </td>
+    <td width="33%" align="center">
       <img src="screenshots/dashboard_admin.png" alt="Admin Dashboard">
       <br><b>Admin Dashboard</b>
     </td>
-    <td width="50%" align="center">
+    <td width="33%" align="center">
       <img src="screenshots/analytic_fitur.png" alt="Analytics">
       <br><b>Modul Analytics</b>
     </td>

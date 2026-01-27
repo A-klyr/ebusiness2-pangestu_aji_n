@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-// Halaman awal (guest)
+// Halaman awal (langsung ke login)
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Debug route - cek role user
