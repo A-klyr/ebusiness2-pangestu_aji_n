@@ -38,8 +38,14 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/000-default.conf
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs
+
 # Jalankan skrip build (install composer & npm assets)
 RUN composer install --no-dev --optimize-autoloader
+RUN npm install
+RUN npm run build
 
 # Atur izin folder
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
