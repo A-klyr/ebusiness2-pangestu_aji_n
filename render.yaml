@@ -1,12 +1,11 @@
 services:
   - type: web
     name: pos-tracker-app
-    runtime: php
-    buildCommand: ./build.sh
-    startCommand: vendor/bin/heroku-php-apache2 public/
+    runtime: docker # Menggunakan Docker agar PHP berjalan 100% stabil
+    plan: free
     envVars:
       - key: APP_KEY
-        sync: false # Anda harus memasukkan ini secara manual di dashboard nanti
+        sync: false
       - key: APP_DEBUG
         value: false
       - key: APP_ENV
